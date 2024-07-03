@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
         BetterPlayerDataSourceType.network,
         "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
     _betterPlayerController = BetterPlayerController(
-        BetterPlayerConfiguration(
+        const BetterPlayerConfiguration(
             autoPlay: true,
             controlsConfiguration: BetterPlayerControlsConfiguration(
               enablePip: true,
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         actions: [
           IconButton(
-            icon: Icon(Icons.picture_in_picture),
+            icon: const Icon(Icons.picture_in_picture),
             onPressed: _enterPiPMode,
           ),
         ],
@@ -128,14 +128,14 @@ class _MyHomePageState extends State<MyHomePage> {
               key: _betterPlayerKey,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   crossAxisSpacing: 8.0,
                   mainAxisSpacing: 8.0,
