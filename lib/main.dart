@@ -45,27 +45,53 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     BetterPlayerBufferingConfiguration bufferingConfiguration =
-        const BetterPlayerBufferingConfiguration(
-      minBufferMs: 20000,
-      maxBufferMs: 50000,
+        BetterPlayerBufferingConfiguration(
+      minBufferMs: 50000,
+      maxBufferMs: 13107200,
       bufferForPlaybackMs: 2500,
       bufferForPlaybackAfterRebufferMs: 5000,
     );
 
     BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+      liveStream: false,
+      useAsmsSubtitles: true,
+      asmsTrackNames: ["Low quality", "Not so low quality", "Medium quality"],
+      subtitles: [
+        BetterPlayerSubtitlesSource(
+          type: BetterPlayerSubtitlesSourceType.network,
+          name: "EN",
+          urls: [
+            "https://dl.dropboxusercontent.com/s/71nzjo2ux3evxqk/example_subtitles.srt"
+          ],
+        ),
+        BetterPlayerSubtitlesSource(
+          type: BetterPlayerSubtitlesSourceType.network,
+          name: "DE",
+          urls: [
+            "https://dl.dropboxusercontent.com/s/71nzjo2ux3evxqk/example_subtitles.srt"
+          ],
+        ),
+      ],
       bufferingConfiguration: bufferingConfiguration,
     );
 
-    _betterPlayerController = BetterPlayerController(
-      const BetterPlayerConfiguration(
-        autoPlay: true,
-        controlsConfiguration: BetterPlayerControlsConfiguration(
-          enablePip: true,
-          pipMenuIcon: Icons.picture_in_picture,
-        ),
+    BetterPlayerConfiguration betterPlayerConfiguration =
+        const BetterPlayerConfiguration(
+      autoPlay: true,
+      controlsConfiguration: BetterPlayerControlsConfiguration(
+        enablePip: true,
+        pipMenuIcon: Icons.picture_in_picture,
       ),
+      subtitlesConfiguration: BetterPlayerSubtitlesConfiguration(
+          fontSize: 14,
+          fontColor: Colors.white,
+          backgroundColor: Colors.black38),
+    );
+
+    _betterPlayerController = BetterPlayerController(
+      betterPlayerConfiguration,
       betterPlayerDataSource: betterPlayerDataSource,
     );
 
