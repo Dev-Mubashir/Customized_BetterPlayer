@@ -1,5 +1,4 @@
 import 'package:betterplayer/crop_image.dart';
-import 'package:betterplayer/main.dart';
 import 'package:betterplayer/vtt_thumbnail.dart';
 import 'package:flutter/material.dart';
 

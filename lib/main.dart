@@ -1,7 +1,8 @@
 import 'package:better_player/better_player.dart';
-import 'package:betterplayer/crop_image.dart';
-import 'package:betterplayer/vtt_thumbnail.dart';
 import 'package:flutter/material.dart';
+
+import 'crop_image.dart';
+import 'vtt_thumbnail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,17 +43,31 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+
+    BetterPlayerBufferingConfiguration bufferingConfiguration =
+        const BetterPlayerBufferingConfiguration(
+      minBufferMs: 20000,
+      maxBufferMs: 50000,
+      bufferForPlaybackMs: 2500,
+      bufferForPlaybackAfterRebufferMs: 5000,
+    );
+
     BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(
-        BetterPlayerDataSourceType.network,
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
+      BetterPlayerDataSourceType.network,
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      bufferingConfiguration: bufferingConfiguration,
+    );
+
     _betterPlayerController = BetterPlayerController(
-        const BetterPlayerConfiguration(
-            autoPlay: true,
-            controlsConfiguration: BetterPlayerControlsConfiguration(
-              enablePip: true,
-              pipMenuIcon: Icons.picture_in_picture,
-            )),
-        betterPlayerDataSource: betterPlayerDataSource);
+      const BetterPlayerConfiguration(
+        autoPlay: true,
+        controlsConfiguration: BetterPlayerControlsConfiguration(
+          enablePip: true,
+          pipMenuIcon: Icons.picture_in_picture,
+        ),
+      ),
+      betterPlayerDataSource: betterPlayerDataSource,
+    );
 
     _betterPlayerController.addEventsListener((event) {
       if (event.betterPlayerEventType == BetterPlayerEventType.progress) {
@@ -100,8 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            content: Text(
-                "Picture-in-Picture mode is not supported on this device.")),
+          content:
+              Text("Picture-in-Picture mode is not supported on this device."),
+        ),
       );
     }
   }
