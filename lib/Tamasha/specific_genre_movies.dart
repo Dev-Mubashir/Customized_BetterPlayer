@@ -1,3 +1,4 @@
+import 'package:betterplayer/Tamasha/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -15,7 +16,7 @@ class CustomPlaceholder extends StatelessWidget {
 class CustomErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Icon(
         Icons.error,
         color: Colors.red,
@@ -36,6 +37,7 @@ class GenreMovieListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(kbgcolor),
       appBar: AppBar(
         title: Text(genre),
       ),
