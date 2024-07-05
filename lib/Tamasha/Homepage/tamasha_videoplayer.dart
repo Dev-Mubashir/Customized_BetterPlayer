@@ -2,16 +2,21 @@ import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
 
 class TamashaVideoPlayer extends StatefulWidget {
-  const TamashaVideoPlayer({super.key, required this.title});
+  const TamashaVideoPlayer({
+    super.key,
+    required this.title,
+    required this.videoUrl,
+  });
   final String title;
+  final String videoUrl;
 
   @override
-  State<TamashaVideoPlayer> createState() => _MyHomePageState();
+  State<TamashaVideoPlayer> createState() => _TamashaVideoPlayerState();
 }
 
-class _MyHomePageState extends State<TamashaVideoPlayer> {
+class _TamashaVideoPlayerState extends State<TamashaVideoPlayer> {
   late BetterPlayerController _betterPlayerController;
-  GlobalKey _betterPlayerKey = GlobalKey();
+  final GlobalKey _betterPlayerKey = GlobalKey();
 
   @override
   void initState() {
@@ -27,7 +32,7 @@ class _MyHomePageState extends State<TamashaVideoPlayer> {
 
     BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
-      "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+      widget.videoUrl,
       liveStream: false,
       useAsmsSubtitles: false,
       bufferingConfiguration: bufferingConfiguration,
@@ -52,8 +57,6 @@ class _MyHomePageState extends State<TamashaVideoPlayer> {
     );
   }
 
-  double currentPosition = 0.0;
-
   void _enterPiPMode() async {
     bool isSupported =
         await _betterPlayerController.isPictureInPictureSupported();
@@ -73,7 +76,6 @@ class _MyHomePageState extends State<TamashaVideoPlayer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Center(child: Text(widget.title)),
         actions: [
           IconButton(
@@ -98,5 +100,11 @@ class _MyHomePageState extends State<TamashaVideoPlayer> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _betterPlayerController.dispose();
+    super.dispose();
   }
 }

@@ -1,7 +1,7 @@
-import 'package:betterplayer/Tamasha/homepage.dart';
-import 'package:betterplayer/Tamasha/tamasha_livetvplayer.dart';
-import 'package:betterplayer/Tamasha/tamasha_videoplayer.dart';
-import 'package:betterplayer/main.dart';
+import 'package:betterplayer/Tamasha/ExplorePage/reels.dart';
+import 'package:betterplayer/Tamasha/Homepage/Movies_data/home.dart';
+import 'package:betterplayer/Tamasha/Homepage/homepage.dart';
+import 'package:betterplayer/Tamasha/LiveTvPage/tamasha_livetvplayer.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -15,11 +15,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    const TamashaHomePage(),
+    const Home(),
     const Tamasha_liveTvPlayer(
       title: 'Tamasha LiveTV Player',
     ),
-    const MyHomePage(title: 'Custom Video Player'),
+    const ReelsPage(),
+    // const MyHomePage(title: 'Custom Video Player'),
     // const TamashaVideoPlayer(title: "Tamasha Video Player"),
   ];
 
@@ -40,30 +41,22 @@ class _BottomNavBarState extends State<BottomNavBar> {
         backgroundColor: Colors.black,
         currentIndex: _currentIndex,
         onTap: onTabTapped,
-        iconSize: 22, // Adjust icon size to maintain consistency
-        selectedFontSize: 9, // Ensure the font size does not change
-        unselectedFontSize: 9, // Ensure the font size does not change
+        iconSize: 22,
+        selectedFontSize: 9,
+        unselectedFontSize: 9,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.tv),
-            label: 'Tamasha Player',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
+            icon: Icon(Icons.tv),
             label: 'Live TV',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'My Player',
+            icon: Icon(Icons.explore),
+            label: 'Reels',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.video_library),
-          //   label: 'My Library',
-          // ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.more_horiz),
-          //   label: 'More',
-          // ),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'dart:ui' as ui;
-import 'package:betterplayer/vtt_thumbnail.dart';
+import 'package:betterplayer/My_Custom_Player/vtt_thumbnail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;

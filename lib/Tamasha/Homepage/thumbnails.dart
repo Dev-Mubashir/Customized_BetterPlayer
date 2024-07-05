@@ -1,5 +1,5 @@
-import 'package:betterplayer/Tamasha/colors.dart';
-import 'package:betterplayer/Tamasha/specific_genre_movies.dart';
+import 'package:betterplayer/utils/colors.dart';
+import 'package:betterplayer/Tamasha/Homepage/specific_genre_movies.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'genre_movie_list_page.dart'; // Import the newly created page
