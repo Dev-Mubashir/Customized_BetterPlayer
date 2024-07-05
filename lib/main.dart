@@ -1,7 +1,6 @@
 import 'package:better_player/better_player.dart';
 import 'package:betterplayer/bottom_navbar.dart';
 import 'package:flutter/material.dart';
-
 import 'crop_image.dart';
 import 'vtt_thumbnail.dart';
 
@@ -15,13 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const BottomNavBar());
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const BottomNavBar(),
+    );
   }
 }
 
@@ -58,7 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
       "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
       liveStream: false,
       useAsmsSubtitles: true,
-      // asmsTrackNames: ["Low quality", "Not so low quality", "Medium quality"],
       subtitles: [
         BetterPlayerSubtitlesSource(
           type: BetterPlayerSubtitlesSourceType.network,
@@ -86,9 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
         pipMenuIcon: Icons.picture_in_picture,
       ),
       subtitlesConfiguration: BetterPlayerSubtitlesConfiguration(
-          fontSize: 14,
-          fontColor: Colors.white,
-          backgroundColor: Colors.black38),
+        fontSize: 14,
+        fontColor: Colors.white,
+        backgroundColor: Colors.black38,
+      ),
     );
 
     _betterPlayerController = BetterPlayerController(
@@ -103,9 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
             _betterPlayerController.videoPlayerController!.value.duration;
 
         if (position != null && duration != null) {
-          setState(() {
-            currentPosition = position.inMilliseconds / duration.inMilliseconds;
-          });
+          if (mounted) {
+            setState(() {
+              currentPosition =
+                  position.inMilliseconds / duration.inMilliseconds;
+            });
+          }
         }
       }
     });
@@ -129,9 +132,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _loadThumbnails() async {
     final thumbnails = await parseVTTFileFromUrl(vttUrl);
-    setState(() {
-      _thumbnails = thumbnails;
-    });
+    if (mounted) {
+      setState(() {
+        _thumbnails = thumbnails;
+      });
+    }
   }
 
   void _enterPiPMode() async {
@@ -140,13 +145,21 @@ class _MyHomePageState extends State<MyHomePage> {
     if (isSupported) {
       _betterPlayerController.enablePictureInPicture(_betterPlayerKey);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content:
-              Text("Picture-in-Picture mode is not supported on this device."),
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+                "Picture-in-Picture mode is not supported on this device."),
+          ),
+        );
+      }
     }
+  }
+
+  @override
+  void dispose() {
+    _betterPlayerController.dispose();
+    super.dispose();
   }
 
   @override

@@ -19,7 +19,7 @@ class _MyTamashaHomePageState extends State<TamashaHomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => const Tamasha_videoplayer(
+          builder: (context) => const TamashaVideoPlayer(
                 title: 'Tamasha Video Player',
               )),
     );
@@ -29,12 +29,13 @@ class _MyTamashaHomePageState extends State<TamashaHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(kbgcolor),
       appBar: AppBar(
         backgroundColor: Color(kbgcolor),
         title: const Center(
           child: Text(
             "Tamasha",
-            style: TextStyle(fontWeight: FontWeight.w600),
+            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
           ),
         ),
       ),

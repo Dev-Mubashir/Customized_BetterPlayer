@@ -28,6 +28,9 @@ class _MyHomePageState extends State<Tamasha_liveTvPlayer> {
       autoPlay: true,
       controlsConfiguration: BetterPlayerControlsConfiguration(
         enablePip: true,
+        enableAudioTracks: false,
+        enablePlaybackSpeed: false,
+        enableSubtitles: false,
         pipMenuIcon: Icons.picture_in_picture,
       ),
     );

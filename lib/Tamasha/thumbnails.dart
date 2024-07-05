@@ -22,6 +22,7 @@ Widget buildGenreRow(
               style: GoogleFonts.openSans(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
+                color: Color(kwhitecolor),
               ),
             ),
             TextButton(
