@@ -1,39 +1,17 @@
 import 'package:better_player/better_player.dart';
-import 'package:betterplayer/bottom_navbar.dart';
+import 'package:betterplayer/crop_image.dart';
+import 'package:betterplayer/vtt_thumbnail.dart';
 import 'package:flutter/material.dart';
 
-import 'crop_image.dart';
-import 'vtt_thumbnail.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const BottomNavBar());
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class Tamasha_videoplayer extends StatefulWidget {
+  const Tamasha_videoplayer({super.key, required this.title});
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Tamasha_videoplayer> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<Tamasha_videoplayer> {
   late BetterPlayerController _betterPlayerController;
   GlobalKey _betterPlayerKey = GlobalKey();
 
