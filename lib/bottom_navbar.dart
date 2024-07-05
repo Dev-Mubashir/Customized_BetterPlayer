@@ -15,12 +15,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    const MyHomePage(title: 'Custom Video Player'),
-    // const TamashaVideoPlayer(title: "Tamasha Video Player"),
     const TamashaHomePage(),
     const Tamasha_liveTvPlayer(
       title: 'Tamasha LiveTV Player',
     ),
+    const MyHomePage(title: 'Custom Video Player'),
+    // const TamashaVideoPlayer(title: "Tamasha Video Player"),
   ];
 
   void onTabTapped(int index) {
@@ -45,16 +45,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
         unselectedFontSize: 9, // Ensure the font size does not change
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'My Player',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.tv),
             label: 'Tamasha Player',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.explore),
             label: 'Live TV',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'My Player',
           ),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.video_library),

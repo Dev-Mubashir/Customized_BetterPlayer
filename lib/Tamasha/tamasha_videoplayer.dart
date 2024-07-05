@@ -73,8 +73,8 @@ class _MyHomePageState extends State<TamashaVideoPlayer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Center(child: Text(widget.title)),
         actions: [
           IconButton(
             icon: const Icon(Icons.picture_in_picture),
