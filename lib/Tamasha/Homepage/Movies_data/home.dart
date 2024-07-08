@@ -1,4 +1,4 @@
-// import 'package:betterplayer/Tamasha/Homepage/Movies_data/carousal.dart';
+import 'package:betterplayer/Tamasha/Homepage/Movies_data/carousal.dart';
 import 'package:betterplayer/Tamasha/Homepage/Movies_data/program_row.dart';
 import 'package:betterplayer/Tamasha/Homepage/Movies_data/programs_data_model.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +9,10 @@ class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
-  _TimeBeingState createState() => _TimeBeingState();
+  _HomeState createState() => _HomeState();
 }
 
-class _TimeBeingState extends State<Home> {
+class _HomeState extends State<Home> {
   late Future<ProgramsDataModel> _programsData;
 
   @override
@@ -31,10 +31,11 @@ class _TimeBeingState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-            child: Text(
-          'Tamasha',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        )),
+          child: Text(
+            'Tamasha',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
       ),
       body: FutureBuilder<ProgramsDataModel>(
         future: _programsData,
@@ -46,12 +47,19 @@ class _TimeBeingState extends State<Home> {
           } else if (!snapshot.hasData || snapshot.data!.programs!.isEmpty) {
             return const Center(child: Text('No data available'));
           } else {
-            return ListView.builder(
-              itemCount: snapshot.data!.programs!.length,
-              itemBuilder: (context, index) {
-                final program = snapshot.data!.programs![index];
-                return ProgramRow(program: program);
-              },
+            return ListView(
+              children: [
+                CarouselExample(), // Add your carousel here
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: snapshot.data!.programs!.length,
+                  itemBuilder: (context, index) {
+                    final program = snapshot.data!.programs![index];
+                    return ProgramRow(program: program);
+                  },
+                ),
+              ],
             );
           }
         },

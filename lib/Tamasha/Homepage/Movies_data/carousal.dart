@@ -67,11 +67,12 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
 
 class CarouselExample extends StatelessWidget {
   final List<String> imgList = [
-    'https://wallpapercave.com/wp/wp8525542.jpg',
-    'https://www.breakingasia.com/wp-content/uploads/IPMAN-3-BANNER.jpg',
-    'https://c4.wallpaperflare.com/wallpaper/182/1016/914/movies-007-skyfall-daniel-craig-wallpaper-preview.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiKO85iWMCQ8B7FWGapmb3Jz0l5MvdwkwXNQ&s',
-    'https://1847884116.rsc.cdn77.org/tamil/gallery/movies/kannagi2023/main.jpg',
+    'https://canvas.tamashaweb.com/jazzlive/uploads/slider/TMSH-1719651399431.webp?id=18',
+    'https://canvas.tamashaweb.com/jazzlive/uploads/slider/TMSH-1719687382438.webp?id=76',
+    'https://canvas.tamashaweb.com/jazzlive/uploads/slider/1712646446.webp?id=63',
+    'https://canvas.tamashaweb.com/jazzlive/uploads/slider/1687867558.webp?id=41',
+    'https://canvas.tamashaweb.com/jazzlive/uploads/slider/TMSH-1718963507632.webp?id=98',
+    'https://canvas.tamashaweb.com/jazzlive/uploads/slider/TMSH-1718961584917.webp?id=99',
   ];
 
   @override
