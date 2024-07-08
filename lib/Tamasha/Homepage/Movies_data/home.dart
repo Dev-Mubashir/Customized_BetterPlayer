@@ -1,9 +1,10 @@
+import 'dart:convert';
+
 import 'package:betterplayer/Tamasha/Homepage/Movies_data/carousal.dart';
 import 'package:betterplayer/Tamasha/Homepage/Movies_data/program_row.dart';
 import 'package:betterplayer/Tamasha/Homepage/Movies_data/programs_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -52,11 +53,11 @@ class _HomeState extends State<Home> {
                 CarouselExample(), // Add your carousel here
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: snapshot.data!.programs!.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: snapshot.data?.programs?.length,
                   itemBuilder: (context, index) {
-                    final program = snapshot.data!.programs![index];
-                    return ProgramRow(program: program);
+                    final program = snapshot.data?.programs?[index];
+                    return ProgramRow(program: program ?? Program());
                   },
                 ),
               ],

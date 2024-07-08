@@ -18,6 +18,7 @@ class ProgramThumbnail extends StatelessWidget {
             builder: (context) => TamashaVideoPlayer(
               title: programDatum.name!,
               videoUrl: programDatum.videoUrl!,
+              isLive: programDatum.isLive ?? false,
             ),
           ),
         );

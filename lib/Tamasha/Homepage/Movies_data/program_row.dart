@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class ProgramRow extends StatelessWidget {
   final Program program;
 
-  const ProgramRow({Key? key, required this.program}) : super(key: key);
+  const ProgramRow({super.key, required this.program});
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +43,9 @@ class ProgramRow extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: program.programData!.length,
             itemBuilder: (context, index) {
-              final programDatum = program.programData![index];
-              return ProgramThumbnail(programDatum: programDatum);
+              final programDatum = program.programData?[index];
+              return ProgramThumbnail(
+                  programDatum: programDatum ?? ProgramDatum());
             },
           ),
         ),

@@ -6,9 +6,11 @@ class TamashaVideoPlayer extends StatefulWidget {
     super.key,
     required this.title,
     required this.videoUrl,
+    required this.isLive,
   });
   final String title;
   final String videoUrl;
+  final bool isLive;
 
   @override
   State<TamashaVideoPlayer> createState() => _TamashaVideoPlayerState();
@@ -33,7 +35,7 @@ class _TamashaVideoPlayerState extends State<TamashaVideoPlayer> {
     BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
       widget.videoUrl,
-      liveStream: false,
+      liveStream: widget.isLive,
       useAsmsSubtitles: false,
       bufferingConfiguration: bufferingConfiguration,
     );
