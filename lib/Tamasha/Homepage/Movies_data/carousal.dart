@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -21,20 +22,21 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
           items: widget.imgList.map((item) {
             return Container(
               width: MediaQuery.of(context).size.width,
-              child: Image.network(
-                item,
+              child: CachedNetworkImage(
+                imageUrl: item,
                 fit: BoxFit.cover,
-                width:
-                    double.infinity, // Ensure the image covers the full width
+                width: double.infinity,
+                // placeholder: (context, url) =>
+                //     const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             );
           }).toList(),
           options: CarouselOptions(
             autoPlay: true,
             enlargeCenterPage: false,
-            aspectRatio:
-                16 / 9, // Adjust this if you want a different aspect ratio
-            viewportFraction: 1.0, // Make sure each item takes the full width
+            aspectRatio: 16 / 9,
+            viewportFraction: 1.0,
             onPageChanged: (index, reason) {
               setState(() {
                 _current = index;
