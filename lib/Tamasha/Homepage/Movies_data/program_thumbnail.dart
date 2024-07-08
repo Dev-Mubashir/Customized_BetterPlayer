@@ -1,5 +1,6 @@
 import 'package:betterplayer/Tamasha/Homepage/Movies_data/programs_data_model.dart';
 import 'package:betterplayer/Tamasha/Homepage/tamasha_videoplayer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ProgramThumbnail extends StatelessWidget {
@@ -32,11 +33,18 @@ class ProgramThumbnail extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Image.network(
-                programDatum.image!,
+              child: CachedNetworkImage(
+                imageUrl: programDatum.image!,
                 fit: BoxFit.cover,
               ),
             ),
+
+            // Expanded(
+            //   child: Image.network(
+            //     programDatum.image!,
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
             // const SizedBox(height: 8.0),
             // Text(
             //   programDatum.name!,

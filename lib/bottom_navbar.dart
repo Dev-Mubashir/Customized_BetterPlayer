@@ -1,6 +1,5 @@
 import 'package:betterplayer/Tamasha/ExplorePage/reels.dart';
 import 'package:betterplayer/Tamasha/Homepage/Movies_data/home.dart';
-import 'package:betterplayer/Tamasha/Homepage/homepage.dart';
 import 'package:betterplayer/Tamasha/LiveTvPage/tamasha_livetvplayer.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +45,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         unselectedFontSize: 9,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.tv),
+            icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(

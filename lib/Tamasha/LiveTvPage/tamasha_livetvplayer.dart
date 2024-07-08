@@ -26,6 +26,8 @@ class _MyHomePageState extends State<Tamasha_liveTvPlayer> {
     BetterPlayerConfiguration betterPlayerConfiguration =
         const BetterPlayerConfiguration(
       autoPlay: true,
+      autoDetectFullscreenDeviceOrientation: true,
+      fullScreenByDefault: false,
       controlsConfiguration: BetterPlayerControlsConfiguration(
         enablePip: true,
         enableAudioTracks: false,
